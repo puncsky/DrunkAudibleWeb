@@ -1,0 +1,35 @@
+{
+  "name": "DrunkAudible.Web.Api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.9.1",
+    "ejs": "^1.0.0",
+    "express": "^4.10.0",
+    "express-session": "^1.9.1",
+    "mongoose": "^3.8.18",
+    "mongoose-types": "^1.0.3",
+    "morgan": "^1.4.1",
+    "oauth2orize": "^1.0.1",
+    "passport": "^0.2.1",
+    "passport-http": "^0.2.2",
+    "passport-http-bearer": "^1.0.1",
+    "serve-static": "^1.6.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/puncsky/DrunkAudible.Web.git"
+  },
+  "author": "Tian Pan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/puncsky/DrunkAudible.Web/issues"
+  },
+  "homepage": "https://github.com/puncsky/DrunkAudible.Web"
+}

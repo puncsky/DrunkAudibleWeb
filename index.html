@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html data-ng-app="gemStore">
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>DrunkAudible Store</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="application.css" />
+    <link href='http://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body ng-controller="StoreController as store">
+
+    <!--  Store Header  -->
+    <header class="hidden-xs">
+      <h1 class="text-center">DrunkAudible Store</h1>
+    </header>
+
+    <div class="container">
+
+      <!-- Today's Special Promotions -->
+      <div class="row" ng-show="store.promotions.length">
+        <div class="col-xs-6 col-md-3" ng-repeat="promotion in store.promotions">
+          <a href="#" class="thumbnail">
+            <img src="images/todays-special-card.png" />
+          </a>
+        </div>
+      </div>
+
+      <!--  Products Container  -->
+      <div class="list-group col-xs-12 col-md-6">
+        <!--  Product Container  -->
+        <div class="list-group-item namecard col-xs-12 col-md-6" ng-repeat="product in store.products">
+
+            <!-- Image Gallery  -->
+            <div class="row">
+              <product-gallery></product-gallery>
+
+              <div class="caption pull-right col-xs-6">
+                <h3 class="pull-right">{{product.title}}</h3>
+                <br />
+                <p class="pull-right">{{product.author}}</p>
+                <br />
+                <br />
+                <button class="btn btn-default pull-right" ng-controller="BuyController as buy" ng-click="buy.getAlbum(product.id)">{{product.price | currency}}</>
+              </div>
+            </div>
+
+            <div class="panel panel-default" ng-controller="detailsCollapse as details">
+              <p data-toggle="collapse" data-target="#collapse-details-{{product.id}}" align="center" ng-click="details.reverseCollapse()">{{ details.isCollapsed ? "More" : "Less" }}</p>
+              <div id="collapse-details-{{product.id}}" class="collapse">
+
+                <hr />
+                <!-- Product Tabs  -->
+                <product-tabs></product-tabs>
+
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+
+  <!-- External Javascripts -->
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+  <!-- Internal Javascripts -->
+  <script type="text/javascript" src="products.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+<script type="text/javascript">
+  function showAndroidToast(toast) {
+    Android.ShowToast(toast);
+  }
+  
+  function getAlbum(albumId) {
+    Android.GetAlbum(albumId);
+  }
+</script>
+
+
+  </body>
+</html>
